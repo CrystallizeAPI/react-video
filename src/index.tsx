@@ -104,10 +104,8 @@ export const Video: FC<Props> = ({
         activeEl.blur();
       }
 
-      const timeout = setTimeout(() => setShowThumbnail(false), 500);
-      return () => clearTimeout(timeout);
+      setShowThumbnail(false);
     }
-    return;
   }, [initiated]);
 
   function onPlayClick(event: any) {
@@ -134,6 +132,9 @@ export const Video: FC<Props> = ({
       {showThumbnail && (
         <button className="react-video__play-btn" onClick={onPlayClick}>
           PLAY
+          <svg viewBox="0 0 100 100" className="react-video__play-icon">
+            <path d="M78.158 51.843L25.842 82.048c-1.418.819-3.191-.205-3.191-1.843v-60.41c0-1.638 1.773-2.661 3.191-1.843l52.317 30.205c1.418.819 1.418 2.867-.001 3.686z" />
+          </svg>
         </button>
       )}
       <video

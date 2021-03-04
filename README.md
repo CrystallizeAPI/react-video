@@ -14,6 +14,7 @@ yarn add @crystallize/react-video
 
 ```
 import { Video } from '@crystallize/react-video';
+import '@crystallize/react-video/dist/styles.css';
 
 const videoFromCrystallize = {
     playlists: [...],
