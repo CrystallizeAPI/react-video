@@ -140,7 +140,7 @@ export const Video: FC<Props> = ({
           style={thumbnailStyle}
         />
       )}
-      {showThumbnail && (
+      {showThumbnail && !playVideo && (
         <button className="react-video__play-btn" onClick={onPlayClick}>
           PLAY
           <svg viewBox="0 0 100 100" className="react-video__play-icon">
