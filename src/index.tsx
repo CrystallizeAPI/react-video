@@ -13,6 +13,27 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   loop?: boolean;
   muted?: boolean;
   controls?: boolean;
+  poster?: string;
+}
+
+/**
+ * Fallback function to get a video poster from the list of
+ * variants
+ */
+function getPoster(thumbnails?: any[]): string | undefined {
+  if (thumbnails && thumbnails.length > 0) {
+    const allVariants = thumbnails[0].variants as CrystallizeImageVariant[];
+    const variantsNoFancyStuff = allVariants.filter(
+      v => !v.url.endsWith('.webp') && !v.url.endsWith('.avif')
+    );
+
+    return (
+      variantsNoFancyStuff
+        .filter(v => v.width > 500)
+        .sort((a, b) => a.width - b.width)[0].url || variantsNoFancyStuff[0].url
+    );
+  }
+  return undefined;
 }
 
 export const Video: FC<Props> = ({
@@ -24,6 +45,7 @@ export const Video: FC<Props> = ({
   loop = false,
   muted = false,
   controls = true,
+  poster,
   className,
 }) => {
   const [showThumbnail, setShowThumbnail] = useState(true);
@@ -155,6 +177,7 @@ export const Video: FC<Props> = ({
         playsInline
         muted={muted}
         loop={loop}
+        poster={poster || getPoster(thumbnails)}
         style={{ opacity: initiated ? 1 : 0, zIndex: showThumbnail ? 1 : 2 }}
         {...videoProps}
       />
