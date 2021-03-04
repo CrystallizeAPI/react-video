@@ -21,14 +21,11 @@ const Template: Story<Props> = args => <Video {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  autoPlay: false,
-  id: 'hkn-demo/21/3/3/1/playground-feedback.mp4',
   playlists: [
     'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.mpd',
     'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.m3u8',
   ],
-  title: null,
-  _thumbnails: [
+  thumbnails: [
     {
       url:
         'https://media.crystallize.com/hkn-demo/21/3/3/3/playground-feedback.png',
@@ -121,5 +118,14 @@ Default.args = {
         },
       ],
     },
+  ],
+};
+
+export const WithoutThumbnail = Template.bind({});
+
+WithoutThumbnail.args = {
+  playlists: [
+    'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.mpd',
+    'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.m3u8',
   ],
 };
