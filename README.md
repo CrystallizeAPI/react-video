@@ -4,6 +4,10 @@
 
 A React package to output videos from Crystallize using the native video element. Use this to easily embed videos powered by the [Crystallize headless commerce service](https://crystallize.com/).
 
+## Demo
+
+[Demo](https://react-video.milliseconds.io/)
+
 ## Install
 
 ```
