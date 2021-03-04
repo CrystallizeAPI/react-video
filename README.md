@@ -30,3 +30,18 @@ const videoFromCrystallize = {
     thumbnmailProps={{ sizes: "(max-width: 700px) 90vw, 700px" }}
 />
 ```
+
+## Supported props
+
+```
+export interface Props extends HTMLAttributes<HTMLDivElement> {
+  playlists: string[];
+  thumbnails?: CrystallizeImageVariant[];
+  thumbnailProps?: object;
+  videoProps: HTMLAttributes<HTMLVideoElement>;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+}
+```

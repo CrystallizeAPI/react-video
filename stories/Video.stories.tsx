@@ -129,3 +129,15 @@ WithoutThumbnail.args = {
     'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.m3u8',
   ],
 };
+
+export const LoopAndNoControls = Template.bind({});
+
+LoopAndNoControls.args = {
+  autoPlay: true,
+  loop: true,
+  controls: false,
+  playlists: [
+    'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.mpd',
+    'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.m3u8',
+  ],
+};

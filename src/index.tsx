@@ -10,6 +10,9 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   thumbnailProps?: object;
   videoProps: HTMLAttributes<HTMLVideoElement>;
   autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
 }
 
 export const Video: FC<Props> = ({
@@ -18,6 +21,9 @@ export const Video: FC<Props> = ({
   thumbnailProps,
   videoProps,
   autoPlay,
+  loop = false,
+  muted = false,
+  controls = true,
   className,
 }) => {
   const [showThumbnail, setShowThumbnail] = useState(true);
@@ -145,9 +151,10 @@ export const Video: FC<Props> = ({
       <video
         className="react-video__video"
         ref={ref}
-        controls
+        controls={controls}
         playsInline
-        muted
+        muted={muted}
+        loop={loop}
         style={{ opacity: initiated ? 1 : 0, zIndex: showThumbnail ? 1 : 2 }}
         {...videoProps}
       />
