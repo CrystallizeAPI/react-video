@@ -28,7 +28,7 @@ Default.args = {
     'https://media.crystallize.com/hkn-demo/21/3/3/1/playground-feedback/cmaf/playground-feedback.m3u8',
   ],
   title: null,
-  thumbnails: [
+  _thumbnails: [
     {
       url:
         'https://media.crystallize.com/hkn-demo/21/3/3/3/playground-feedback.png',

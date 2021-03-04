@@ -5,9 +5,7 @@ import { supportsDash, getDash } from './dash';
 import { getHls } from './hls';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  id?: string;
   playlists: string[];
-  title?: string;
   thumbnails?: CrystallizeImageVariant[];
   thumbnailProps?: object;
   videoProps: HTMLAttributes<HTMLVideoElement>;
@@ -113,20 +111,27 @@ export const Video: FC<Props> = ({
     setPlayVideo(true);
   }
 
+  const thumbnailStyle = {
+    zIndex: showThumbnail ? 2 : 1,
+    opacity: !initiated ? 1 : 0,
+  };
+
   return (
     <div
       className={`react-video${className ? ` ${className}` : ''}`}
       style={{ position: 'relative' }}
     >
-      {thumbnails && thumbnails.length > 0 && (
+      {thumbnails && thumbnails.length > 0 ? (
         <Image
           {...thumbnails[0]}
           className="react-video__thumbnail"
           {...thumbnailProps}
-          style={{
-            zIndex: showThumbnail ? 2 : 1,
-            opacity: !initiated ? 1 : 0,
-          }}
+          style={thumbnailStyle}
+        />
+      ) : (
+        <div
+          className="react-video__thumbnail-placeholder"
+          style={thumbnailStyle}
         />
       )}
       {showThumbnail && (

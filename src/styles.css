@@ -5,11 +5,17 @@
   position: relative;
 }
 
-.react-video > figure {
+.react-video > figure,
+.react-video__thumbnail-placeholder {
   position: relative;
   z-index: 2;
   margin: 0;
   transition: opacity 100ms;
+}
+
+.react-video__thumbnail-placeholder {
+  padding-top: 56.25%;
+  background-color: #000;
 }
 
 .react-video__play-btn {
