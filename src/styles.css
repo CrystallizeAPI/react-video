@@ -7,10 +7,18 @@
 
 .react-video > figure,
 .react-video__thumbnail-placeholder {
+  display: block;
   position: relative;
   z-index: 2;
   margin: 0;
   transition: opacity 100ms;
+}
+
+.react-video__thumbnail,
+.react-video__thumbnail > img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
 }
 
 .react-video__thumbnail-placeholder {
@@ -34,8 +42,8 @@
 
 .react-video__play-icon {
   position: absolute;
-  top: calc(50% - var(--play-button-height));
-  left: calc(50% - var(--play-button-width));
+  top: calc(50% - calc(var(--play-button-height) / 2));
+  left: calc(50% - calc(var(--play-button-width) / 2));
   height: var(--play-button-height);
   width: var(--play-button-width);
 }

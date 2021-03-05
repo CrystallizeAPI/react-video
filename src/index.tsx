@@ -69,6 +69,11 @@ export const Video: FC<Props> = ({
       );
     }
 
+    // Hide the thumbnail when the video is starting
+    video.addEventListener('play', () => setShowThumbnail(false), {
+      once: true,
+    });
+
     if (supportsDash()) {
       getDash().then(dashjs => {
         const src = playlists.find(p => p.endsWith('.mpd'));
@@ -123,17 +128,6 @@ export const Video: FC<Props> = ({
     }
   }, [playVideo]);
 
-  useEffect(() => {
-    if (initiated) {
-      const activeEl = document.activeElement as HTMLElement;
-      if (activeEl) {
-        activeEl.blur();
-      }
-
-      setShowThumbnail(false);
-    }
-  }, [initiated]);
-
   function onPlayClick(event: any) {
     event.preventDefault();
     setPlayVideo(true);
@@ -162,7 +156,7 @@ export const Video: FC<Props> = ({
           style={thumbnailStyle}
         />
       )}
-      {showThumbnail && !playVideo && (
+      {!playVideo && (
         <button className="react-video__play-btn" onClick={onPlayClick}>
           PLAY
           <svg viewBox="0 0 100 100" className="react-video__play-icon">
