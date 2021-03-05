@@ -4,6 +4,12 @@ import { Image, CrystallizeImageVariant } from '@crystallize/react-image';
 import { supportsDash, getDash } from './dash';
 import { getHls } from './hls';
 
+declare global {
+  interface navigator {
+    connection: any;
+  }
+}
+
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   playlists: string[];
   thumbnails?: CrystallizeImageVariant[];
@@ -49,9 +55,23 @@ export const Video: FC<Props> = ({
   className,
 }) => {
   const [showThumbnail, setShowThumbnail] = useState(true);
-  const [playVideo, setPlayVideo] = useState(autoPlay);
+  const [playVideo, setPlayVideo] = useState(false);
   const [initiated, setInitiated] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
+
+  /**
+   * Determine if we should auto play the video.
+   * We allow for auto play unless the user has opted
+   * in for saving data
+   */
+  useEffect(() => {
+    if (autoPlay) {
+      const connection = (navigator as any).connection;
+      if (!connection || !connection.saveData) {
+        setPlayVideo(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (!playVideo) {
