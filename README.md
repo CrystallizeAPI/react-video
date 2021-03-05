@@ -43,5 +43,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   loop?: boolean;
   muted?: boolean;
   controls?: boolean;
+  poster?: string;
+  playButtonText?: string;
 }
 ```

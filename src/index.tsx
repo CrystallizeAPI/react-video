@@ -20,6 +20,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   muted?: boolean;
   controls?: boolean;
   poster?: string;
+  playButtonText?: string;
 }
 
 /**
@@ -52,6 +53,7 @@ export const Video: FC<Props> = ({
   muted = false,
   controls = true,
   poster,
+  playButtonText = 'Play video',
   className,
 }) => {
   const [showThumbnail, setShowThumbnail] = useState(true);
@@ -85,12 +87,12 @@ export const Video: FC<Props> = ({
     const video = ref.current;
     if (!video) {
       throw new Error(
-        'Cannot initialize video. Cannot find the video HTML node'
+        'Cannot initialize video. Unable to find the video HTML node'
       );
     }
 
-    // Hide the thumbnail when the video is starting
-    video.addEventListener('play', () => setShowThumbnail(false), {
+    // Hide the thumbnail when the video has started
+    video.addEventListener('playing', () => setShowThumbnail(false), {
       once: true,
     });
 
@@ -155,7 +157,7 @@ export const Video: FC<Props> = ({
 
   const thumbnailStyle = {
     zIndex: showThumbnail ? 2 : 1,
-    opacity: !initiated ? 1 : 0,
+    opacity: showThumbnail ? 1 : 0,
   };
 
   return (
@@ -178,7 +180,7 @@ export const Video: FC<Props> = ({
       )}
       {!playVideo && (
         <button className="react-video__play-btn" onClick={onPlayClick}>
-          PLAY
+          {playButtonText}
           <svg viewBox="0 0 100 100" className="react-video__play-icon">
             <path d="M78.158 51.843L25.842 82.048c-1.418.819-3.191-.205-3.191-1.843v-60.41c0-1.638 1.773-2.661 3.191-1.843l52.317 30.205c1.418.819 1.418 2.867-.001 3.686z" />
           </svg>
