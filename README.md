@@ -38,7 +38,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   playlists: string[];
   thumbnails?: CrystallizeImageVariant[];
   thumbnailProps?: object;
-  videoProps: HTMLAttributes<HTMLVideoElement>;
+  videoProps?: HTMLAttributes<HTMLVideoElement>;
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;

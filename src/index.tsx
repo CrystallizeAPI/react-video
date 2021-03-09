@@ -14,7 +14,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   playlists: string[];
   thumbnails?: CrystallizeImageVariant[];
   thumbnailProps?: object;
-  videoProps: HTMLAttributes<HTMLVideoElement>;
+  videoProps?: HTMLAttributes<HTMLVideoElement>;
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;
@@ -160,6 +160,8 @@ export const Video: FC<Props> = ({
     opacity: showThumbnail ? 1 : 0,
   };
 
+  const posterUrl = poster || getPoster(thumbnails);
+
   return (
     <div
       className={`react-video${className ? ` ${className}` : ''}`}
@@ -193,7 +195,7 @@ export const Video: FC<Props> = ({
         playsInline
         muted={muted}
         loop={loop}
-        poster={poster || getPoster(thumbnails)}
+        poster={posterUrl}
         style={{ opacity: initiated ? 1 : 0, zIndex: showThumbnail ? 1 : 2 }}
         {...videoProps}
       />
