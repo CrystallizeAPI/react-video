@@ -115,6 +115,13 @@ export const Video: FC<Props> = ({
           streaming: {
             scheduleWhilePaused: false /* stops the player from loading segments while paused */,
             fastSwitchEnabled: true /* enables buffer replacement when switching bitrates for faster switching */,
+            abr: {
+              usePixelRatioInLimitBitrateByPortal: true /* Respect retina screens */,
+              initialBitrate: {
+                audio: -1,
+                video: 5000
+              }
+            }
           },
         });
         player.setAutoPlay(true);
