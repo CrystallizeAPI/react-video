@@ -60,7 +60,6 @@ export const Video: FC<Props> = ({
   const [playVideo, setPlayVideo] = useState(false);
   const [initiated, setInitiated] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
-  const connection = (navigator as any).connection;
 
   /**
    * Determine if we should auto play the video.
@@ -69,6 +68,7 @@ export const Video: FC<Props> = ({
    */
   useEffect(() => {
     if (autoPlay) {
+      const connection = (navigator as any).connection;
       if (!connection || !connection.saveData) {
         setPlayVideo(true);
       }
@@ -98,6 +98,7 @@ export const Video: FC<Props> = ({
 
     const startWithHighQualityVideo = (function () {
       try {
+        const connection = (navigator as any).connection;
         return connection.downlink >= 5 && !connection.saveData;
       } catch (e) {
         return false;
