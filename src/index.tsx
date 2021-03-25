@@ -60,6 +60,7 @@ export const Video: FC<Props> = ({
   const [playVideo, setPlayVideo] = useState(false);
   const [initiated, setInitiated] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
+  const connection = (navigator as any).connection;
 
   /**
    * Determine if we should auto play the video.
@@ -68,7 +69,6 @@ export const Video: FC<Props> = ({
    */
   useEffect(() => {
     if (autoPlay) {
-      const connection = (navigator as any).connection;
       if (!connection || !connection.saveData) {
         setPlayVideo(true);
       }
@@ -96,6 +96,14 @@ export const Video: FC<Props> = ({
       once: true,
     });
 
+    const startWithHighQualityVideo = (function () {
+      try {
+        return connection.downlink >= 5 && !connection.saveData;
+      } catch (e) {
+        return false;
+      }
+    })();
+
     if (supportsDash()) {
       getDash().then(dashjs => {
         const src = playlists.find(p => p.endsWith('.mpd'));
@@ -119,7 +127,7 @@ export const Video: FC<Props> = ({
               usePixelRatioInLimitBitrateByPortal: true /* Respect retina screens */,
               initialBitrate: {
                 audio: -1,
-                video: 5000
+                video: startWithHighQualityVideo ? 5000 : -1
               }
             }
           },
@@ -144,7 +152,6 @@ export const Video: FC<Props> = ({
         video.autoplay = true;
         video.src = src;
 
-        // setTimeout(() => video.play(), 50);
         setInitiated(true);
       } else {
         getHls().then(hls => {
