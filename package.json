@@ -19,7 +19,7 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/styles.css"
+    "./dist/styles.css": "./dist/styles.css"
   },
   "engines": {
     "node": ">=10"
