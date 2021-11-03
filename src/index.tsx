@@ -39,12 +39,12 @@ function getPoster(thumbnails?: any[]): string | undefined {
     const allVariants = firstThumbnail.variants as CrystallizeImageVariant[];
 
     const variantsNoFancyStuff = allVariants.filter(
-      v => !v.url.endsWith('.webp') && !v.url.endsWith('.avif')
+      (v) => !v.url.endsWith('.webp') && !v.url.endsWith('.avif')
     );
 
     return (
       variantsNoFancyStuff
-        .filter(v => v.width > 500)
+        .filter((v) => v.width > 500)
         .sort((a, b) => a.width - b.width)[0].url || variantsNoFancyStuff[0].url
     );
   }
@@ -104,7 +104,7 @@ export const Video: FC<Props> = ({
       once: true,
     });
 
-    const startWithHighQualityVideo = (function() {
+    const startWithHighQualityVideo = (function () {
       try {
         const connection = (navigator as any).connection;
         return connection.downlink >= 5 && !connection.saveData;
@@ -114,8 +114,8 @@ export const Video: FC<Props> = ({
     })();
 
     if (supportsDash()) {
-      getDash().then(dashjs => {
-        const src = playlists.find(p => p.endsWith('.mpd'));
+      getDash().then((dashjs) => {
+        const src = playlists.find((p) => p.endsWith('.mpd'));
         if (!src) {
           throw new Error('Cannot find a valid Dash source for video');
         }
@@ -148,7 +148,7 @@ export const Video: FC<Props> = ({
         setInitiated(true);
       });
     } else {
-      const src = playlists.find(p => p.endsWith('.m3u8'));
+      const src = playlists.find((p) => p.endsWith('.m3u8'));
       if (!src) {
         throw new Error('Cannot find a valid HLS source for video');
       }
@@ -163,7 +163,7 @@ export const Video: FC<Props> = ({
 
         setInitiated(true);
       } else {
-        getHls().then(hls => {
+        getHls().then((hls) => {
           hls.loadSource(src);
           hls.attachMedia(video);
 
@@ -184,7 +184,7 @@ export const Video: FC<Props> = ({
   };
 
   const posterUrl = poster || getPoster(thumbnails);
-  console.log(posterUrl, thumbnails);
+
   return (
     <div
       className={`react-video${className ? ` ${className}` : ''}`}
