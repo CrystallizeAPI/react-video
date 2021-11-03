@@ -29,14 +29,22 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
  */
 function getPoster(thumbnails?: any[]): string | undefined {
   if (thumbnails && thumbnails.length > 0) {
-    const allVariants = thumbnails[0].variants as CrystallizeImageVariant[];
-    const variantsNoFancyStuff = allVariants?.filter(
+    const [firstThumbnail] = thumbnails;
+
+    // Check for naive image props
+    if (firstThumbnail._availableSizes && firstThumbnail._availableFormats) {
+      return firstThumbnail.url;
+    }
+
+    const allVariants = firstThumbnail.variants as CrystallizeImageVariant[];
+
+    const variantsNoFancyStuff = allVariants.filter(
       v => !v.url.endsWith('.webp') && !v.url.endsWith('.avif')
     );
 
     return (
       variantsNoFancyStuff
-        ?.filter(v => v.width > 500)
+        .filter(v => v.width > 500)
         .sort((a, b) => a.width - b.width)[0].url || variantsNoFancyStuff[0].url
     );
   }
@@ -176,7 +184,7 @@ export const Video: FC<Props> = ({
   };
 
   const posterUrl = poster || getPoster(thumbnails);
-
+  console.log(posterUrl, thumbnails);
   return (
     <div
       className={`react-video${className ? ` ${className}` : ''}`}

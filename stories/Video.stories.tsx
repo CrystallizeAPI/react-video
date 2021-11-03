@@ -22,7 +22,6 @@ const videoModel = {
   ],
   thumbnails: [
     {
-      key: 'furniture/21/3/5/1/color-is-back.jpg',
       url: 'https://media.crystallize.com/furniture/21/3/5/1/color-is-back.jpg',
       variants: [
         {
@@ -79,22 +78,31 @@ const Template: Story<Props> = args => (
 // By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
 // https://storybook.js.org/docs/react/workflows/unit-testing
 export const Default = Template.bind({});
-
 Default.args = {
   ...videoModel,
 };
 
 export const WithoutThumbnail = Template.bind({});
-
 WithoutThumbnail.args = {
   playlists: videoModel.playlists,
 };
 
 export const LoopAndNoControls = Template.bind({});
-
 LoopAndNoControls.args = {
   ...videoModel,
   autoPlay: true,
   loop: true,
   controls: false,
+};
+
+export const WithNaiveReactImageProps = Template.bind({});
+WithNaiveReactImageProps.args = {
+  ...videoModel,
+  thumbnails: [
+    {
+      url: 'https://media.crystallize.com/furniture/21/3/5/1/color-is-back.jpg',
+      _availableSizes: [100, 200, 500, 768],
+      _availableFormats: ['webp', 'jpeg'],
+    },
+  ],
 };
