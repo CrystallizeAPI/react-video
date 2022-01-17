@@ -7,7 +7,7 @@ declare global {
 let added = false;
 
 export function getHls() {
-  return new Promise<any>(resolve => {
+  return new Promise<any>((resolve) => {
     if (!added) {
       const hlsCore = document.createElement('script');
       hlsCore.src = 'https://cdn.jsdelivr.net/npm/hls.js@latest';
@@ -19,7 +19,13 @@ export function getHls() {
 
     (function checkForLibraryExistence() {
       if ('Hls' in window) {
-        resolve(window.Hls);
+        resolve(
+          new window.Hls({
+            testBandwidth: false,
+            abrEwmaDefaultEstimate: 1000000,
+            abrMaxWithRealBitrate: true,
+          })
+        );
       } else {
         setTimeout(checkForLibraryExistence, 10);
       }
