@@ -69,7 +69,7 @@ const videoModel = {
   ],
 };
 
-const Template: Story<Props> = args => (
+const Template: Story<Props> = (args) => (
   <div style={{ maxWidth: 800, margin: 30 }}>
     <Video {...args} />
   </div>
@@ -95,8 +95,8 @@ LoopAndNoControls.args = {
   controls: false,
 };
 
-export const WithNaiveReactImageProps = Template.bind({});
-WithNaiveReactImageProps.args = {
+export const WithNativeReactImageProps = Template.bind({});
+WithNativeReactImageProps.args = {
   ...videoModel,
   thumbnails: [
     {

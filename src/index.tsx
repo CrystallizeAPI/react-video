@@ -130,14 +130,12 @@ export const Video: FC<Props> = ({
               dashjs.Debug.LOG_LEVEL_NONE /* turns off console logging */,
           },
           streaming: {
-            scheduleWhilePaused: false /* stops the player from loading segments while paused */,
-            fastSwitchEnabled: true /* enables buffer replacement when switching bitrates for faster switching */,
             abr: {
-              usePixelRatioInLimitBitrateByPortal: true /* Respect retina screens */,
               initialBitrate: {
                 audio: -1,
-                video: startWithHighQualityVideo ? 5000 : -1,
+                video: startWithHighQualityVideo ? 10000 : -1,
               },
+              autoSwitchBitrate: { audio: true, video: true },
             },
           },
         });
