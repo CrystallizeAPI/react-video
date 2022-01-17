@@ -165,6 +165,11 @@ export const Video: FC<Props> = ({
           hls.loadSource(src);
           hls.attachMedia(video);
 
+          hls.on(hls.Events.MEDIA_ATTACHED, function () {
+            video.muted = true;
+            video.play();
+          });
+
           setInitiated(true);
         });
       }
