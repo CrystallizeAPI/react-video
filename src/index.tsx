@@ -113,7 +113,34 @@ export const Video: FC<Props> = ({
       }
     })();
 
-    if (supportsDash()) {
+    /**
+     * Prioritise m3u8
+     */
+    const m3u8Src = playlists.find((p) => p.endsWith('.m3u8'));
+    if (m3u8Src) {
+      /**
+       * iOS has native support for HLS, and we can use
+       * the m3u8 source directly, without the use of hls.js
+       */
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.autoplay = true;
+        video.src = m3u8Src;
+
+        setInitiated(true);
+      } else {
+        getHls().then((hls) => {
+          hls.loadSource(m3u8Src);
+          hls.attachMedia(video);
+
+          hls.on('hlsMediaAttached', function () {
+            video.muted = true;
+            video.play();
+          });
+
+          setInitiated(true);
+        });
+      }
+    } else if (supportsDash()) {
       getDash().then((dashjs) => {
         const src = playlists.find((p) => p.endsWith('.mpd'));
         if (!src) {
@@ -145,34 +172,6 @@ export const Video: FC<Props> = ({
 
         setInitiated(true);
       });
-    } else {
-      const src = playlists.find((p) => p.endsWith('.m3u8'));
-      if (!src) {
-        throw new Error('Cannot find a valid HLS source for video');
-      }
-
-      /**
-       * iOS has native support for HLS, and we can use
-       * the m3u8 source directly, without the use of hls.js
-       */
-      if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.autoplay = true;
-        video.src = src;
-
-        setInitiated(true);
-      } else {
-        getHls().then((hls) => {
-          hls.loadSource(src);
-          hls.attachMedia(video);
-
-          hls.on(hls.Events.MEDIA_ATTACHED, function () {
-            video.muted = true;
-            video.play();
-          });
-
-          setInitiated(true);
-        });
-      }
     }
   }, [playVideo]);
 
