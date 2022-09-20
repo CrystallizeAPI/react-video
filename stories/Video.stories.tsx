@@ -17,52 +17,163 @@ export default meta;
 const videoModel = {
   title: 'A video of a street filled with graffiti art',
   playlists: [
-    'https://media.crystallize.com/furniture/20/6/12/21/color-is-back-grafitti/cmaf/color-is-back-grafitti.mpd',
-    'https://media.crystallize.com/furniture/20/6/12/21/color-is-back-grafitti/cmaf/color-is-back-grafitti.m3u8',
+    'https://media.crystallize.com/crystallize_marketing/22/9/8/5/this-is-crystallize/cmaf/this-is-crystallize.mpd',
+    'https://media.crystallize.com/crystallize_marketing/22/9/8/5/this-is-crystallize/cmaf/this-is-crystallize.m3u8',
   ],
   thumbnails: [
     {
-      url: 'https://media.crystallize.com/furniture/21/3/5/1/color-is-back.jpg',
+      url:
+        'https://media.crystallize.com/crystallize_marketing/22/9/19/1/crystallize-product-storytelling.jpg',
+      altText: null,
+      key:
+        'crystallize_marketing/22/9/19/1/crystallize-product-storytelling.jpg',
       variants: [
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@100/color-is-back.webp',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.avif',
           width: 100,
+          key:
+            'crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.avif',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@100/color-is-back.jpeg',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.webp',
           width: 100,
+          key:
+            'crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.webp',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@200/color-is-back.webp',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.jpeg',
+          width: 100,
+          key:
+            'crystallize_marketing/22/9/19/1/@100/crystallize-product-storytelling.jpeg',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.avif',
           width: 200,
+          key:
+            'crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.avif',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@200/color-is-back.jpeg',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.webp',
           width: 200,
+          key:
+            'crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.webp',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@500/color-is-back.webp',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.jpeg',
+          width: 200,
+          key:
+            'crystallize_marketing/22/9/19/1/@200/crystallize-product-storytelling.jpeg',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.avif',
           width: 500,
+          key:
+            'crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.avif',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@500/color-is-back.jpeg',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.webp',
           width: 500,
+          key:
+            'crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.webp',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@768/color-is-back.webp',
-          width: 768,
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.jpeg',
+          width: 500,
+          key:
+            'crystallize_marketing/22/9/19/1/@500/crystallize-product-storytelling.jpeg',
         },
         {
           url:
-            'https://media.crystallize.com/furniture/21/3/5/1/@768/color-is-back.jpeg',
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.avif',
           width: 768,
+          key:
+            'crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.avif',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.webp',
+          width: 768,
+          key:
+            'crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.webp',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.jpeg',
+          width: 768,
+          key:
+            'crystallize_marketing/22/9/19/1/@768/crystallize-product-storytelling.jpeg',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.avif',
+          width: 1024,
+          key:
+            'crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.avif',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.webp',
+          width: 1024,
+          key:
+            'crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.webp',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.jpeg',
+          width: 1024,
+          key:
+            'crystallize_marketing/22/9/19/1/@1024/crystallize-product-storytelling.jpeg',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.avif',
+          width: 1366,
+          key:
+            'crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.avif',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.webp',
+          width: 1366,
+          key:
+            'crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.webp',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.jpeg',
+          width: 1366,
+          key:
+            'crystallize_marketing/22/9/19/1/@1366/crystallize-product-storytelling.jpeg',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.avif',
+          width: 1600,
+          key:
+            'crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.avif',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.webp',
+          width: 1600,
+          key:
+            'crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.webp',
+        },
+        {
+          url:
+            'https://media.crystallize.com/crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.jpeg',
+          width: 1600,
+          key:
+            'crystallize_marketing/22/9/19/1/@1600/crystallize-product-storytelling.jpeg',
         },
       ],
     },
@@ -100,7 +211,8 @@ WithNativeReactImageProps.args = {
   ...videoModel,
   thumbnails: [
     {
-      url: 'https://media.crystallize.com/furniture/21/3/5/1/color-is-back.jpg',
+      url:
+        'https://media.crystallize.com/crystallize_marketing/22/9/19/1/crystallize-product-storytelling.jpg',
       _availableSizes: [100, 200, 500, 768],
       _availableFormats: ['webp', 'jpeg'],
     },
